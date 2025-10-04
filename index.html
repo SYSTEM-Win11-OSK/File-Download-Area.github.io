@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件下载中心</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            border-radius: 2px;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        .files-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .file-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 25px;
+        }
+        
+        .file-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .file-info {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .file-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+        
+        .file-description {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .file-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #95a5a6;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .files-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>文件下载中心</h1>
+            <p class="description">在这里您可以找到并下载所需的各类文件资源。我们持续更新内容，为您提供最新、最有价值的资料。</p>
+        </header>
+        
+        <div class="files-container">
+            <!-- 文件卡片 1 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <h3 class="file-name">产品使用手册</h3>
+                    <p class="file-description">详细的产品使用说明和操作指南，帮助您更好地使用我们的产品。</p>
+                    <div class="file-meta">
+                        <span>PDF</span>
+                        <span>2023-10-15</span>
+                        <span>2.5 MB</span>
+                    </div>
+                    <!-- =================== 下载链接位置 1 =================== -->
+                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
+                    <a href="#" class="download-btn">下载文件</a>
+                </div>
+            </div>
+            
+            <!-- 文件卡片 2 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <h3 class="file-name">产品展示图集</h3>
+                    <p class="file-description">高清产品图片合集，包含多角度展示和细节特写。</p>
+                    <div class="file-meta">
+                        <span>ZIP</span>
+                        <span>2023-09-28</span>
+                        <span>15.7 MB</span>
+                    </div>
+                    <!-- =================== 下载链接位置 2 =================== -->
+                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
+                    <a href="#" class="download-btn">下载文件</a>
+                </div>
+            </div>
+            
+            <!-- 文件卡片 3 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <h3 class="file-name">产品演示视频</h3>
+                    <p class="file-description">5分钟产品功能演示视频，直观展示产品核心功能和使用方法。</p>
+                    <div class="file-meta">
+                        <span>MP4</span>
+                        <span>2023-11-05</span>
+                        <span>42.3 MB</span>
+                    </div>
+                    <!-- =================== 下载链接位置 3 =================== -->
+                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
+                    <a href="#" class="download-btn">下载文件</a>
+                </div>
+            </div>
+            
+            <!-- 文件卡片 4 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <h3 class="file-name">产品介绍音频</h3>
+                    <p class="file-description">产品功能语音介绍，适合在移动环境中收听了解产品信息。</p>
+                    <div class="file-meta">
+                        <span>MP3</span>
+                        <span>2023-10-30</span>
+                        <span>8.1 MB</span>
+                    </div>
+                    <!-- =================== 下载链接位置 4 =================== -->
+                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
+                    <a href="#" class="download-btn">下载文件</a>
+                </div>
+            </div>
+            
+            <!-- 文件卡片 5 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <h3 class="file-name">技术白皮书</h3>
+                    <p class="file-description">深入的技术原理和实现细节，适合技术人员阅读。</p>
+                    <div class="file-meta">
+                        <span>DOCX</span>
+                        <span>2023-11-12</span>
+                        <span>3.2 MB</span>
+                    </div>
+                    <!-- =================== 下载链接位置 5 =================== -->
+                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
+                    <a href="#" class="download-btn">下载文件</a>
+                </div>
+            </div>
+            
+            <!-- 文件卡片 6 -->
+            <div class="file-card">
+                <div class="file-info">
+                    <h3 class="file-name">数据报表模板</h3>
+                    <p class="file-description">预设的数据分析模板，帮助您快速生成专业报表。</p>
+                    <div class="file-meta">
+                        <span>XLSX</span>
+                        <span>2023-09-15</span>
+                        <span>1.8 MB</span>
+                    </div>
+                    <!-- =================== 下载链接位置 6 =================== -->
+                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
+                    <a href="#" class="download-btn">下载文件</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
