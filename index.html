@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文件下载中心</title>
+    <title>个人主页与文件下载中心</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -17,46 +17,168 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: #333;
             line-height: 1.6;
-            padding: 20px;
             min-height: 100vh;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 40px;
             padding: 20px;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            position: relative;
-            display: inline-block;
+        /* 导航栏样式 */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-radius: 0 0 12px 12px;
         }
         
-        h1:after {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .nav-links a:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* 个人主页区域样式 */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 0;
+            gap: 40px;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .placeholder-icon {
+            font-size: 10rem;
+            color: #3498db;
+            opacity: 0.7;
+        }
+        
+        .greeting {
+            font-size: 1.2rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            max-width: 500px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 文件下载区域样式 */
+        .downloads-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
             background: linear-gradient(to right, #3498db, #2ecc71);
             border-radius: 2px;
-        }
-        
-        .description {
-            font-size: 1.1rem;
-            color: #7f8c8d;
-            max-width: 700px;
-            margin: 20px auto 0;
         }
         
         .files-container {
@@ -126,117 +248,222 @@
             background: #2980b9;
         }
         
+        /* 页脚样式 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                order: 2;
+            }
+            
+            .hero-image {
+                order: 1;
+            }
+            
+            .hero p {
+                margin: 0 auto 25px;
+            }
+            
+            .placeholder-icon {
+                font-size: 8rem;
+            }
+        }
+        
         @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
             .files-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .placeholder-icon {
+                font-size: 6rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>文件下载中心</h1>
-            <p class="description">在这里您可以找到并下载所需的各类文件资源。我们持续更新内容，为您提供最新、最有价值的资料。</p>
-        </header>
-        
-        <div class="files-container">
-            <!-- 文件卡片 1 -->
-            <div class="file-card">
-                <div class="file-info">
-                    <h3 class="file-name">Windows XP Horror 无害版</h3>
-                    <p class="file-description">Windows XP Horror 无害版病毒</p>
-                    <div class="file-meta">
-                        <span>EXE</span>
-                        <span>2025-10-4</span>
-                        <span>51.68 MB</span>
-                    </div>
-                    <!-- =================== 下载链接位置 1 =================== -->
-                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
-                    <a href="https://www.123865.com/s/g2AyVv-bgii3" class="download-btn">下载文件</a>
-                </div>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-user-circle"></i>
+                <span>个人主页</span>
             </div>
-            
-            <!-- 文件卡片 2 -->
-            <div class="file-card">
-                <div class="file-info">
-                    <h3 class="file-name">NoEscape 有害版</h3>
-                    <p class="file-description">NoEscape 有害版病毒</p>
-                    <div class="file-meta">
-                        <span>EXE</span>
-                        <span>2025-10-4</span>
-                        <span>666.66 KB</span>
-                    </div>
-                    <!-- =================== 下载链接位置 2 =================== -->
-                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
-                    <a href="https://www.123865.com/s/g2AyVv-cgii3" class="download-btn">下载文件</a>
-                </div>
-            </div>
-            
-            <!-- 文件卡片 3 -->
-            <div class="file-card">
-                <div class="file-info">
-                    <h3 class="file-name">文件名</h3>
-                    <p class="file-description">简介</p>
-                    <div class="file-meta">
-                        <span>格式</span>
-                        <span>时间</span>
-                        <span>大小</span>
-                    </div>
-                    <!-- =================== 下载链接位置 3 =================== -->
-                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
-                    <a href="#" class="download-btn">下载文件</a>
-                </div>
-            </div>
-            
-            <!-- 文件卡片 4 -->
-            <div class="file-card">
-                <div class="file-info">
-                    <h3 class="file-name">文件名</h3>
-                    <p class="file-description">简介</p>
-                    <div class="file-meta">
-                        <span>格式</span>
-                        <span>时间</span>
-                        <span>大小</span>
-                    </div>
-                    <!-- =================== 下载链接位置 4 =================== -->
-                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
-                    <a href="#" class="download-btn">下载文件</a>
-                </div>
-            </div>
-            
-            <!-- 文件卡片 5 -->
-            <div class="file-card">
-                <div class="file-info">
-                    <h3 class="file-name">文件名</h3>
-                    <p class="file-description">简介</p>
-                    <div class="file-meta">
-                        <span>格式</span>
-                        <span>时间</span>
-                        <span>大小</span>
-                    </div>
-                    <!-- =================== 下载链接位置 5 =================== -->
-                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
-                    <a href="#" class="download-btn">下载文件</a>
-                </div>
-            </div>
-            
-            <!-- 文件卡片 6 -->
-            <div class="file-card">
-                <div class="file-info">
-                    <h3 class="file-name">文件名</h3>
-                    <p class="file-description">简介</p>
-                    <div class="file-meta">
-                        <span>格式</span>
-                        <span>时间</span>
-                        <span>大小</span>
-                    </div>
-                    <!-- =================== 下载链接位置 6 =================== -->
-                    <!-- 请将下面的 # 替换为实际的文件下载链接 -->
-                    <a href="#" class="download-btn">下载文件</a>
-                </div>
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#downloads">下载中心</a>
             </div>
         </div>
+    </nav>
+    
+    <div class="container">
+        <!-- 个人主页区域 -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="greeting">你好，我是</p>
+                <h1>SYSTEM-Win11-OSK</h1>
+                <p>一名充满热情的软件开发者。</p>
+                <div class="hero-buttons">
+                    <a href="#downloads" class="btn">查看我的作品</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-user placeholder-icon"></i>
+            </div>
+        </section>
+        
+        <!-- 文件下载区域 -->
+        <section id="downloads" class="downloads-section">
+            <h2 class="section-title">文件下载中心</h2>
+            <p class="description" style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: #7f8c8d;">在这里您可以找到并下载所需的各类文件资源。我们持续更新内容，为您提供最新、最有价值的资料。</p>
+            
+            <div class="files-container">
+                <!-- 文件卡片 1 -->
+                <div class="file-card">
+                    <div class="file-info">
+                        <h3 class="file-name">Windows XP Horror 无害版</h3>
+                        <p class="file-description">Windows XP Horror 无害版病毒</p>
+                        <div class="file-meta">
+                            <span>EXE</span>
+                            <span>2025-10-4</span>
+                            <span>51.68 MB</span>
+                        </div>
+                        <a href="https://www.123865.com/s/g2AyVv-bgii3" class="download-btn">下载文件</a>
+                    </div>
+                </div>
+                
+                <!-- 文件卡片 2 -->
+                <div class="file-card">
+                    <div class="file-info">
+                        <h3 class="file-name">NoEscape 有害版</h3>
+                        <p class="file-description">NoEscape 有害版病毒</p>
+                        <div class="file-meta">
+                            <span>EXE</span>
+                            <span>2025-10-4</span>
+                            <span>666.66 KB</span>
+                        </div>
+                        <a href="https://www.123865.com/s/g2AyVv-cgii3" class="download-btn">下载文件</a>
+                    </div>
+                </div>
+                
+                <!-- 文件卡片 3 -->
+                <div class="file-card">
+                    <div class="file-info">
+                        <h3 class="file-name">文件名</h3>
+                        <p class="file-description">简介</p>
+                        <div class="file-meta">
+                            <span>格式</span>
+                            <span>时间</span>
+                            <span>大小</span>
+                        </div>
+                        <a href="#" class="download-btn">下载文件</a>
+                    </div>
+                </div>
+                
+                <!-- 文件卡片 4 -->
+                <div class="file-card">
+                    <div class="file-info">
+                        <h3 class="file-name">文件名</h3>
+                        <p class="file-description">简介</p>
+                        <div class="file-meta">
+                            <span>格式</span>
+                            <span>时间</span>
+                            <span>大小</span>
+                        </div>
+                        <a href="#" class="download-btn">下载文件</a>
+                    </div>
+                </div>
+                
+                <!-- 文件卡片 5 -->
+                <div class="file-card">
+                    <div class="file-info">
+                        <h3 class="file-name">文件名</h3>
+                        <p class="file-description">简介</p>
+                        <div class="file-meta">
+                            <span>格式</span>
+                            <span>时间</span>
+                            <span>大小</span>
+                        </div>
+                        <a href="#" class="download-btn">下载文件</a>
+                    </div>
+                </div>
+                
+                <!-- 文件卡片 6 -->
+                <div class="file-card">
+                    <div class="file-info">
+                        <h3 class="file-name">文件名</h3>
+                        <p class="file-description">简介</p>
+                        <div class="file-meta">
+                            <span>格式</span>
+                            <span>时间</span>
+                            <span>大小</span>
+                        </div>
+                        <a href="#" class="download-btn">下载文件</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-user-circle"></i>
+                <span>SYSTEM-Win11-OSK</span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
