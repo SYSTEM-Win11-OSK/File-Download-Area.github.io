@@ -18,6 +18,94 @@
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        /* 深色模式样式 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                color: #e0e0e0;
+            }
+            
+            nav {
+                background: rgba(30, 30, 46, 0.95);
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .logo {
+                color: #e0e0e0;
+            }
+            
+            .nav-links a {
+                color: #e0e0e0;
+            }
+            
+            .nav-links a:hover {
+                color: #3498db;
+            }
+            
+            .hero h1 {
+                background: linear-gradient(to right, #e0e0e0, #3498db);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            
+            .hero p {
+                color: #b0b0b0;
+            }
+            
+            .file-card {
+                background: #2d3748;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .file-name {
+                color: #e0e0e0;
+            }
+            
+            .file-description {
+                color: #b0b0b0;
+            }
+            
+            .file-meta {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                color: #a0aec0;
+            }
+            
+            .section-title {
+                color: #e0e0e0;
+            }
+            
+            .description {
+                color: #b0b0b0;
+            }
+            
+            .hero::before {
+                background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            }
+            
+            .hero::after {
+                background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(46, 204, 113, 0.05) 100%);
+            }
+            
+            .downloads-section::before {
+                background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(46, 204, 113, 0.05) 100%);
+            }
+            
+            .contact-card {
+                background: #2d3748;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .contact-title {
+                color: #e0e0e0;
+            }
+            
+            .contact-description {
+                color: #b0b0b0;
+            }
         }
         
         .container {
@@ -443,6 +531,138 @@
             left: 100%;
         }
         
+        /* 联系方式区域样式 - 已去除蒙布 */
+        .contact-section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            bottom: -80px;
+            left: -80px;
+            z-index: 0;
+        }
+        
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            top: -50px;
+            right: -50px;
+            z-index: 0;
+        }
+        
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 280px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            transition: transform 0.5s ease;
+        }
+        
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .bilibili-icon {
+            background: linear-gradient(135deg, #fb7299, #ff85ad);
+            color: white;
+        }
+        
+        .github-icon {
+            background: linear-gradient(135deg, #333, #555);
+            color: white;
+        }
+        
+        .contact-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .contact-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+        
         /* 页脚样式 */
         footer {
             background: #2c3e50;
@@ -585,6 +805,11 @@
             .hero-buttons {
                 justify-content: center;
             }
+            
+            .contact-container {
+                flex-direction: column;
+                align-items: center;
+            }
         }
         
         @media (max-width: 768px) {
@@ -648,6 +873,7 @@
             <div class="nav-links">
                 <a href="#home">首页</a>
                 <a href="#downloads">下载中心</a>
+                <a href="#contact">联系方式</a>
             </div>
         </div>
     </nav>
@@ -661,7 +887,7 @@
                 <p>一名充满热情的软件开发者。专注于创造高效、用户友好的应用程序和解决方案。热衷于探索新技术，持续学习并提升技能。</p>
                 <div class="hero-buttons">
                     <a href="#downloads" class="btn">查看我的作品</a>
-                    <a href="#" class="btn btn-secondary">了解更多</a>
+                    <a href="#contact" class="btn btn-secondary">联系我</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -764,6 +990,34 @@
                 </div>
             </div>
         </section>
+        
+        <!-- 联系方式区域 - 已去除蒙布 -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">联系方式</h2>
+            <p class="description" style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: #7f8c8d;">欢迎通过以下平台与我联系，关注我的最新动态和项目更新。</p>
+            
+            <div class="contact-container">
+                <!-- B站卡片 -->
+                <div class="contact-card">
+                    <div class="contact-icon bilibili-icon">
+                        <i class="fab fa-bilibili"></i>
+                    </div>
+                    <h3 class="contact-title">Bilibili</h3>
+                    <p class="contact-description">关注我的B站账号，获取最新视频教程和技术分享。</p>
+                    <a href="https://space.bilibili.com/3546631939033897" class="contact-btn">访问主页</a>
+                </div>
+                
+                <!-- GitHub卡片 -->
+                <div class="contact-card">
+                    <div class="contact-icon github-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3 class="contact-title">GitHub</h3>
+                    <p class="contact-description">查看我的开源项目，参与代码贡献和技术交流。</p>
+                    <a href="https://github.com/WindowsActivati" class="contact-btn">访问主页</a>
+                </div>
+            </div>
+        </section>
     </div>
     
     <!-- 页脚 -->
@@ -772,6 +1026,10 @@
             <div class="footer-logo">
                 <i class="fas fa-user-circle"></i>
                 <span>WindowsActivati</span>
+            </div>
+            <div class="social-links">
+                <a href="https://space.bilibili.com/3546631939033897" style="color: white; margin-right: 15px;"><i class="fab fa-bilibili"></i></a>
+                <a href="https://github.com/WindowsActivati" style="color: white;"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
